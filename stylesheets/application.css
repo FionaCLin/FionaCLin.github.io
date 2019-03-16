@@ -197,6 +197,9 @@ body {
 .home-page a {
   color: #fff;
 }
+.date {
+  float: right;
+}
 a:hover {
   text-decoration: underline;
 }
