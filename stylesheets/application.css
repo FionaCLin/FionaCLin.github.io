@@ -329,6 +329,7 @@ li {
     max-width: 900px;
     padding: 16px;
 }
+
 #quote {
     display: flex;
     flex-direction: column;
@@ -362,6 +363,7 @@ li {
 
     #jumbotron {
         margin: 24px auto 0;
+        overflow: scroll;
     }
 
 }
