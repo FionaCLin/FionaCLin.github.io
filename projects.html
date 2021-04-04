@@ -1,160 +1,126 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="utf-8" />
-	<meta content='width=device-width, initial-scale=1' name='viewport'>
-	<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
-	<meta
-		content='My site about all things programming. Topics include JS, Boostrap, .Net, Visual Studio and Girls in IT.'
-		name='description'>
-	<meta content='Fiona Lin, JS, Boostrap, Rails, Girls in IT' name='keywords'>
-	<title>Fiona Lin's Wonderland</title>
-	<link rel="stylesheet" href="stylesheets/main.css">
-	<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
-	<link href='stylesheets/css/bootstrap.css' rel='stylesheet' type='text/css'>
-	<link href="stylesheets/application.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="stylesheets/js/alphabet.js"></script>
-	<script src='stylesheets/js/jquery.min.js'></script>
+    <meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <meta
+            content='My site about all things programming. Topics include JS, Boostrap, .Net, Visual Studio and Girls in IT.'
+            name='description'>
+    <meta content='Fiona Lin, JS, Boostrap, Rails, Girls in IT' name='keywords'>
+    <title>Fiona Lin's Porfolio</title>
+
+
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
+    <link href='stylesheets/css/bootstrap.css' rel='stylesheet' type='text/css'>
+    <link href="stylesheets/application.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="stylesheets/js/alphabet.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="stylesheets/js/render.js"></script>
+
 </head>
-
 <body>
-	<header id="jumbotron">
-		<canvas id="myCanvas"></canvas>
-		<script type="text/javascript" src="stylesheets/js/bubbles.js"></script>
-		<script type="text/javascript" src="stylesheets/js/main.js"></script>
-		<h2>Welcome to My Personal Learning Journal</h2>
-	</header>
-	<nav>
-		<div class='nav-open-btn'>
-			<ul>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-		</div>
-		<ul class='nav-display'>
-			<li>
-				<a class="nav-link" href="index.html">Home</a>
-			</li>
-			<li>
-				<a class="nav-link" href="study.html">Current Study</a>
-			</li>
-			<li>
-				<a class="nav-link" href="http://au.linkedin.com/in/FionaCLin">LinkedIn Resume</a>
-			</li>
-			<li>
-				<a class="nav-link active" href="projects.html">Projects</a>
-			</li>
-		</ul>
-	</nav>
-	<script>
-		$('nav .nav-open-btn').on('click', function () {
-			$('nav .nav-display').toggleClass('open');
-		})
-	</script>
-	<section>
+<nav class="navbar navbar-fixed-top">
+    <div class='nav-open-btn'>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <ul class="nav-display">
+        <li></li>
+    </ul>
+</nav>
+<header id="jumbotron">
+    <canvas id="name-canvas" name="test-canvas"></canvas>
+    <script type="text/javascript" src="stylesheets/js/bubbles.js"></script>
+    <script type="text/javascript" src="stylesheets/js/main.js"></script>
+    <div id="quote"></div>
+</header>
+<div id="main">
+    <section>
 
-		<article>
-			<br />
+        <article>
+            <fieldset>
+                <legend>React + Redux & Node.js</legend>
+                <!-- <ol>
+                    <li></li>
+                </ol> -->
+            </fieldset>
 
-			<fieldset>
-				<legend>Data Structure and algorithms</legend>
-				<ol>
-					<li> <a class="nav-link" href="http://fionaclin.github.io/police_academy_1927/">Police Academy 1927</a></li>
-					<p>
-						A data structure course assignment in native C
-					</p>
-				</ol>
-			</fieldset>
-			</br>
-			<fieldset>
-				<legend>Angular.js</legend>
-				<ol>
-					<li> <a class="nav-link" href="./Angular/Quiz/index.html">Little Saturn Quiz</a></li>
-					<p>
-						A simple Angular tutorial from Lynda
-					</p>
-				</ol>
-			</fieldset>
-			</br>
-			<fieldset>
-				<legend>Flask and Python</legend>
-				<ol>
-					<li> <a class="nav-link" href="https://epiproapp.appspot.com/">Software Engineer Workshop Epidemic Watch
-							Project -- (developing)</a></li>
+            <fieldset>
+                <legend>Data Science</legend>
+                <!-- <ol>
+                    <li></li>
+                </ol> -->
+            </fieldset>
+            <fieldset>
+                <legend>Internet of Things</legend>
+                <!-- <ol>
+                    <li></li>
+                </ol> -->
+            </fieldset>
+            <fieldset>
+                <legend>Data Structure and algorithms</legend>
+                <ol>
+                    <li><a class="nav-link" href="http://fionaclin.github.io/police_academy_1927/">Police Academy
+                        1927</a></li>
+                    <p>
+                        A data structure course assignment in native C
+                    </p>
+                </ol>
+            </fieldset>
+            <fieldset>
+                <legend>Angular.js</legend>
+                <ol>
+                    <li><a class="nav-link" href="./Angular/Quiz/index.html">Little Saturn Quiz</a></li>
+                    <p>
+                        A simple Angular tutorial from Lynda
+                    </p>
+                </ol>
+            </fieldset>
+            <fieldset>
+                <legend>Flask and Python</legend>
+                <ol>
+                    <li><a class="nav-link" href="https://epiproapp.appspot.com/">Software Engineer Workshop Epidemic
+                        Watch
+                        Project -- (developing)</a></li>
 
-					<p>The project has been developed in collaboration with the Integrated Systems for Epidemic
-						Response (ISER) which is a NHMRC Centre for Research Excellence located at
-						UNSW. ISER monitors global epidemics and provides critical analysis of outbreaks of public
-						health significance. ISER also conducts applied systems research, enhance collaboration and
-						build capacity in health systems research for epidemic control. It brings together experts in
-						field epidemiology and epidemic response, military experts, international law and risk science
-						experts, and government and non-government agencies involved in epidemic response.
-						The project is meant to contribute towards automating and epidemics detection
-						system called EpiWATCH which uses openly available data sources to produce the following
-						information:</p>
+                    <p>The project has been developed in collaboration with the Integrated Systems for Epidemic
+                        Response (ISER) which is a NHMRC Centre for Research Excellence located at
+                        UNSW. ISER monitors global epidemics and provides critical analysis of outbreaks of public
+                        health significance. ISER also conducts applied systems research, enhance collaboration and
+                        build capacity in health systems research for epidemic control. It brings together experts in
+                        field epidemiology and epidemic response, military experts, international law and risk science
+                        experts, and government and non-government agencies involved in epidemic response.
+                        The project is meant to contribute towards automating and epidemics detection
+                        system called EpiWATCH which uses openly available data sources to produce the following
+                        information:</p>
 
-					<ul>
-						<strong>Outbreak Alerts</strong> Rapid intelligence service providing outbreak alerts from
-						publicly available sources.
-					</ul>
-					<ul>
-						<strong>Briefs</strong>: Critical analyses prepared on outbreaks that are serious,
-						persistent, have unusual characteristics or high case fatality rates.
-					</ul>
-					<ul>
-						<strong>Digest</strong>: A regular presentation/newsletter available to inform policy makers,
-						government and other stakeholders about recent outbreaks.
-					</ul>
-				</ol>
-			</fieldset>
-			</br>
-			<fieldset>
-				<legend>React + Redux & Node.js</legend>
-				<!-- <ol>
-					<li></li>
-				</ol> -->
-			</fieldset>
-			</br>
-			<fieldset>
-				<legend>Internet of Things</legend>
-				<!-- <ol>
-					<li></li>
-				</ol> -->
-			</fieldset>
-			<br />
-			<fieldset>
-				<legend>Data Science</legend>
-				<!-- <ol>
-					<li></li>
-				</ol> -->
-			</fieldset>
-			<br />
-		</article>
+                    <ul>
+                        <strong>Outbreak Alerts</strong> Rapid intelligence service providing outbreak alerts from
+                        publicly available sources.
+                    </ul>
+                    <ul>
+                        <strong>Briefs</strong>: Critical analyses prepared on outbreaks that are serious,
+                        persistent, have unusual characteristics or high case fatality rates.
+                    </ul>
+                    <ul>
+                        <strong>Digest</strong>: A regular presentation/newsletter available to inform policy makers,
+                        government and other stakeholders about recent outbreaks.
+                    </ul>
+                </ol>
+            </fieldset>
 
-	</section>
+        </article>
 
-	<footer>
-		<ul class="social-links">
-			<li>
-				<a alt="Twitter" target="_blank" href="https://twitter.com/FionaCLin">
-					<img src="image/twitter.png" alt="Twitter" title="Twitter">
-				</a>
-			</li>
-			<li>
-				<a alt="GitHub" target="_blank" href="https://github.com/FionaCLin">
-					<img src="image/github_alt.png" alt="GitHub" title="GitHub">
-				</a>
-			</li>
-			<li>
-				<a alt="LinkedIn" target="_blank" href="http://au.linkedin.com/in/FionaCLin">
-					<img src="image/linkedin.png" alt="Linked In" title="LinkedIn">
-				</a>
-			</li>
-		</ul>
-		<span class="site-info">Copyright @ Fiona Lin 2015</span>
-	</footer>
+    </section>
+</div>
+<footer></footer>
 </body>
 
 </html>

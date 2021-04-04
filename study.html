@@ -1,97 +1,104 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="utf-8" />
-	<meta content='width=device-width, initial-scale=1' name='viewport'>
-	<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
-	<meta
-		content='My site about all things programming. Topics include JS, Boostrap, .Net, Visual Studio and Girls in IT.'
-		name='description'>
-	<meta content='Fiona Lin, JS, Boostrap, Rails, Girls in IT' name='keywords'>
-	<title>Fiona Lin's Wonderland</title>
-	<link rel="stylesheet" href="stylesheets/main.css">
-	<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
-	<link href='stylesheets/css/bootstrap.css' rel='stylesheet' type='text/css'>
-	<link href="stylesheets/application.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="stylesheets/js/alphabet.js"></script>
-	<script src='stylesheets/js/jquery.min.js'></script>
+    <meta charset="UTF-8">
+	 <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <meta
+            content='My site about all things programming. Topics include JS, Boostrap, .Net, Visual Studio and Girls in IT.'
+            name='description'>
+    <meta content='Fiona Lin, JS, Boostrap, Rails, Girls in IT' name='keywords'>
+    <title>Fiona Lin's Porfolio</title>
+
+
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
+    <link href='stylesheets/css/bootstrap.css' rel='stylesheet' type='text/css'>
+    <link href="stylesheets/application.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="stylesheets/js/alphabet.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="stylesheets/js/render.js"></script>
+
 </head>
-
 <body>
-	<header id="jumbotron">
-		<canvas id="myCanvas"></canvas>
-		<script type="text/javascript" src="stylesheets/js/bubbles.js"></script>
-		<script type="text/javascript" src="stylesheets/js/main.js"></script>
-		<h2>Welcome to My Personal Learning Journal</h2>
-	</header>
-	<nav>
-		<div class='nav-open-btn'>
-			<ul>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-		</div>
-		<ul class='nav-display'>
-			<li>
-				<a class="nav-link" href="index.html">Home</a>
-			</li>
-			<li>
-				<a class="nav-link active" href="study.html">Current Study</a>
-			</li>
-			<li>
-				<a class="nav-link" href="http://au.linkedin.com/in/FionaCLin">LinkedIn Resume</a>
-			</li>
-			<li>
-				<a class="nav-link" href="projects.html">Projects</a>
-			</li>
-			<li>
-				<a class="nav-link" href="archive.html">Archives</a>
-			</li>
-		</ul>
-	</nav>
-	<script>
-		$('nav .nav-open-btn').on('click', function () {
-			$('nav .nav-display').toggleClass('open');
-		})
-	</script>
-	<section>
-		<header>
-		<h1>Current Study</h1>
-		</header>
-		<!-- <article>
-			<br />
-			<fieldset>
-				<legend>DFT and FFT</legend>
-				<p>12-March-2016</p>
-			</fieldset>
-			</br>
-			<br />
-		</article> -->
+<nav class="navbar navbar-fixed-top">
+    <div class='nav-open-btn'>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <ul class="nav-display">
+        <li></li>
+    </ul>
+</nav>
+<header id="jumbotron">
+    <canvas id="name-canvas" name="test-canvas"></canvas>
+    <script type="text/javascript" src="stylesheets/js/bubbles.js"></script>
+    <script type="text/javascript" src="stylesheets/js/main.js"></script>
+    <div id="quote"></div>
+</header>
+<div id="main">
+    <div id="content">
+        <fieldset>
+            <legend>Current Study</legend>
+        </fieldset>
+        <fieldset>
+            <legend>Past Study</legend>
 
-	</section>
+            <article>
+                <p class="item-company-title">This redivository contains all the courses work acquired in UNSW. The source code for each course
+                    are
+                    organised
+                    in the individual branch.
+                </p>
+                <div class="item-personal-title">
+                    Branch Index
+                </div>
+                <ul>
+                    <li><a
+                            href="https://github.com/FionaCLin/UNSW-learning/tree/comp2041-Software-Construction">comp2041-Software-Construction</a>
+                    </li>
+                    <li><a
+                            href="https://github.com/FionaCLin/UNSW-learning/tree/comp2111-System-Modelling-and-Design">comp2111-System-Modelling-and-Design</a>
+                    </li>
+                    <li><a
+                            href="https://github.com/FionaCLin/UNSW-learning/tree/comp3311-Database-Systems">comp3311-Database-Systems</a>
+                    </li>
+                    <li><a
+                            href="https://github.com/FionaCLin/UNSW-learning/tree/comp3141-Software-System-Design-and-Implementation">comp3141-Software-System-Design-and-Implementation</a>
+                    </li>
+                    <li><a
+                            href="https://github.com/FionaCLin/UNSW-learning/tree/comp4336-Mobile-Data-Network">comp4336-Mobile-Data-Network</a>
+                    </li>
+                    <li><a
+                            href="https://github.com/FionaCLin/UNSW-learning/tree/comp6733-Internet-of-Things-Design-Studio">comp6733-Internet-of-Things-Design-Studio</a>
+                    </li>
+                    <li><a
+                            href="https://github.com/FionaCLin/UNSW-learning/tree/comp9315-DBMS-Implementation">comp9315-DBMS-Implementation</a>
+                    </li>
+                    <li><a
+                            href="https://github.com/FionaCLin/UNSW-learning/tree/seng2021-Software-Engineering-Workshop-2B">seng2021-Software-Engineering-Workshop-2B</a>
+                    </li>
+                    <li><a
+                            href="https://github.com/FionaCLin/UNSW-learning/tree/comp9318-Data-Warehousing-and-Data-Miningn">comp9318-Data-Warehousing-and-Data-Mining</a>
+                    </li>
+                    <li><a
+                            href="https://github.com/FionaCLin/UNSW-learning/tree/comp6771-Advanced-C++-Programming">comp6771-Advanced-C++-Programming</a>
+                    </li>
+                    <li><a
+                            href="https://github.com/FionaCLin/UNSW-learning/tree/comp3141-Software-System-Design-and-Implementation">comp3141-Software-System-Design-and-Implementation</a>
+                    </li>
+                </ul>
+            </article>
+        </fieldset>
 
-	<footer>
-		<ul class="social-links">
-			<li>
-				<a alt="Twitter" target="_blank" href="https://twitter.com/FionaCLin">
-					<img src="image/twitter.png" alt="Twitter" title="Twitter">
-				</a>
-			</li>
-			<li>
-				<a alt="GitHub" target="_blank" href="https://github.com/FionaCLin">
-					<img src="image/github_alt.png" alt="GitHub" title="GitHub">
-				</a>
-			</li>
-			<li>
-				<a alt="LinkedIn" target="_blank" href="http://au.linkedin.com/in/FionaCLin">
-					<img src="image/linkedin.png" alt="Linked In" title="LinkedIn">
-				</a>
-			</li>
-		</ul>
-		<span class="site-info">Copyright @ Fiona Lin 2015</span>
-	</footer>
+    </div>
+</div>
+<footer></footer>
 </body>
 
 </html>

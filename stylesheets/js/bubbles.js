@@ -157,7 +157,7 @@ function initEventListeners() {
 function updateCanvasDimensions() {
     canvas.attr({
         height: 150,
-        width: 850
+        width: 750
     });
     canvasWidth = canvas.width();
     canvasHeight = canvas.height();
@@ -294,7 +294,7 @@ $(window).mouseenter(function () {
     window.reset = false;
 });
 
-var canvas = $("#myCanvas");
+var canvas = $("#name-canvas");
 var canvasHeight;
 var canvasWidth;
 var ctx;
