@@ -943,7 +943,7 @@ code {
     width: 20%;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1500px) {
     #all-projects .project {
         width: 25%;
     }
