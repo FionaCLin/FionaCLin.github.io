@@ -1,3 +1,25 @@
+function getNameCanvas() {
+
+    var myName = "Fiona Lin";
+
+    var red = [0, 100, 63];
+    var orange = [40, 100, 60];
+    var green = [75, 100, 40];
+    var blue = [196, 77, 55];
+    var purple = [280, 50, 60];
+    var letterColors = [purple, orange, green, red];
+    console.log(window)
+
+    drawName(myName, letterColors);
+
+    if (10 < 3) {
+        bubbleShape = 'square';
+    } else {
+        bubbleShape = 'circle';
+    }
+    bounceBubbles();
+}
+
 function getNav() {
     let navObjects = [{
         title: "Home",
@@ -13,16 +35,16 @@ function getNav() {
         href: 'projects.html'
     }]
     const [curHref] = window.location.pathname.split('/').slice(-1)
-    console.log(curHref )
 
 
-    let navContent = navObjects.map(({ href, title }, index) => `<li>
+    let navContent = navObjects.map(({href, title}, index) => `<li>
 				<a class="nav-link ${curHref === href ? 'active' : ''}" href="${href}">${title}</a>
 			</li>`).join('')
     $('nav>ul').html(navContent)
     $('nav .nav-open-btn').on('click', function () {
         $('nav .nav-display').toggleClass('open');
     })
+
 
 }
 
@@ -41,7 +63,7 @@ function getFooter() {
         title: 'LinkedIn'
     }]
     let footerContent = `<ul class="social-links">
-        ${footers.map(({ img, href, title }) => `<li>
+        ${footers.map(({img, href, title}) => `<li>
             <a alt="${title}" target="_blank" href="${href}">
                 <img src="${img}" alt="Twitter" title="${title}">
             </a>
@@ -58,8 +80,12 @@ $(document).ready(function () {
     $('#quote').html('<div>Choose your love, Love your choice.</div><div>- Thomas S. Monson</div>')
     getNav();
     getFooter();
+    console.log('ready',canvas)
+    getNameCanvas()
+
 });
 
 $(window).on("load", function () {
-    console.log("window loaded");
+    console.log("canvas loaded", canvas);
 });
+

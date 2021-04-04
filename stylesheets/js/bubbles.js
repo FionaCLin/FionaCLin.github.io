@@ -295,6 +295,7 @@ $(window).mouseenter(function () {
 });
 
 var canvas = $("#name-canvas");
+console.log(canvas)
 var canvasHeight;
 var canvasWidth;
 var ctx;
@@ -312,3 +313,5 @@ var blue = [196, 77, 55];
 var purple = [280, 50, 60];
 
 setTimeout(updateCanvasDimensions, 30);
+
+
