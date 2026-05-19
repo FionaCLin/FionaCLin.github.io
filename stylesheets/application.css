@@ -1114,3 +1114,13 @@ code {
         padding: 10px 20px;
     }
 }
+
+/* Ensure header canvas scales on small screens */
+@media (max-width: 768px) {
+    #jumbotron canvas {
+        width: 100% !important;
+        height: auto !important;
+        display: block;
+    }
+}
+
