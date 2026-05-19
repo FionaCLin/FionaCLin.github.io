@@ -1,3 +1,34 @@
+# FionaCLin.github.io — Static site
+
+This repository contains a small static personal site. Recent changes refactor repeated header/nav/footer into partials and add a tiny JS include loader.
+
+## What changed
+- Extracted `partials/header.html`, `partials/nav.html`, `partials/footer.html`.
+- Added `js/include.js` to inject partials into pages at runtime.
+- Updated `index.html`, `archive.html`, `study.html`, `projects.html`, `layout.html` to use includes.
+
+## Local testing
+Serve the site from the repo root and open your browser at the port used:
+```bash
+python3 -m http.server 8000
+# then open http://localhost:8000
+```
+
+## Deployment (GitHub Pages)
+This repository is named `FionaCLin.github.io` so GitHub Pages will publish the `main` branch (or `master`) to `https://FionaCLin.github.io/` after you push. There is a `CNAME` file in the repo — keep it if you want a custom domain.
+
+Steps to deploy:
+```bash
+git add -A
+git commit -m "Deploy: update site"
+git push origin main
+```
+
+If your repository publishes from a specific branch or directory adjust GitHub Pages settings accordingly.
+
+## Notes
+- The include loader (`js/include.js`) uses `fetch()` to load `partials/*.html`; this requires serving over HTTP (file:// won't work in many browsers).
+- To further centralize, consider extracting the common `<head>` into a partial.
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/Fiona-Lin/Fiona-Lin.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.

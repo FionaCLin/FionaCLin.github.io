@@ -17,38 +17,8 @@
 </head>
 
 <body>
-	<header id="jumbotron">
-		<canvas id="myCanvas"></canvas>
-		<script type="text/javascript" src="stylesheets/js/bubbles.js"></script>
-		<script type="text/javascript" src="stylesheets/js/main.js"></script>
-		<h2>Welcome to My Personal Learning Journal</h2>
-	</header>
-	<nav>
-		<div class='nav-open-btn'>
-			<ul>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-		</div>
-		<ul class='nav-display'>
-			<li>
-				<a class="nav-link" href="index.html">Home</a>
-			</li>
-			<li>
-				<a class="nav-link" href="study.html">Current Study</a>
-			</li>
-			<li>
-				<a class="nav-link" href="http://au.linkedin.com/in/FionaCLin">LinkedIn Resume</a>
-			</li>
-			<li>
-				<a class="nav-link" href="projects.html">Projects</a>
-			</li>
-			<li>
-				<a class="nav-link active" href="archive.html">Archives</a>
-			</li>
-		</ul>
-	</nav>
+	<div data-include="header"></div>
+	<div data-include="nav"></div>
 	<script>
 		$('nav .nav-open-btn').on('click', function () {
 			$('nav .nav-display').toggleClass('open');
@@ -116,26 +86,8 @@
 
 	</section>
 
-	<footer>
-		<ul class="social-links">
-			<li>
-				<a alt="Twitter" target="_blank" href="https://twitter.com/FionaCLin">
-						<img src="image/twitter.png" alt="Twitter" title="Twitter">
-					</a>
-			</li>
-			<li>
-				<a alt="GitHub" target="_blank" href="https://github.com/FionaCLin">
-						<img src="image/github_alt.png" alt="GitHub" title="GitHub">
-					</a>
-			</li>
-			<li>
-				<a alt="LinkedIn" target="_blank" href="http://au.linkedin.com/in/FionaCLin">
-						<img src="image/linkedin.png" alt="Linked In" title="LinkedIn">
-					</a>
-			</li>
-		</ul>
-		<span class="site-info">Copyright @ Fiona Lin 2015</span>
-	</footer>
+	<div data-include="footer"></div>
+	<script src="js/include.js"></script>
 </body>
 
 </html>
