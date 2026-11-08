@@ -1,22 +1,31 @@
-const bubbleColors = ["#bd60d1", "#ffb52e", "#8dcc00", "#ff4b50"];
+import "../stylesheets/js/alphabet.js";
+
+const bubbleColors = [
+  "hsl(280, 50%, 60%)",
+  "hsl(40, 100%, 60%)",
+  "hsl(75, 100%, 40%)",
+  "hsl(0, 100%, 63%)",
+];
+
+const referenceWidth = 750;
+const referenceHeight = 150;
 
 export function initializeBannerAnimation(canvas) {
   const context = canvas.getContext("2d");
   const heading = canvas.parentElement.querySelector("h1");
 
-  if (!context) {
+  if (!context || !document.alphabet) {
     heading?.classList.remove("visually-hidden");
     canvas.hidden = true;
     return;
   }
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const sampleCanvas = document.createElement("canvas");
-  const sampleContext = sampleCanvas.getContext("2d", { willReadFrequently: true });
-  const step = 9;
   let width = 0;
   let height = 0;
-  let scale = 1;
+  let pixelRatio = 1;
+  let scaleX = 1;
+  let scaleY = 1;
   let particles = [];
   let pointer = null;
   let frame = 0;
@@ -27,44 +36,49 @@ export function initializeBannerAnimation(canvas) {
     height = bounds.height;
     if (!width || !height) return;
 
-    scale = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.round(width * scale);
-    canvas.height = Math.round(height * scale);
-    context.setTransform(scale, 0, 0, scale, 0, 0);
+    pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    scaleX = width / referenceWidth;
+    scaleY = height / referenceHeight;
+    canvas.width = Math.round(width * pixelRatio);
+    canvas.height = Math.round(height * pixelRatio);
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-    sampleCanvas.width = canvas.width;
-    sampleCanvas.height = canvas.height;
-    sampleContext.setTransform(scale, 0, 0, scale, 0, 0);
-    sampleContext.clearRect(0, 0, width, height);
-
-    const name = "Fiona Lin";
-    const fontSize = Math.min(96, height * 0.72, (width - 24) / 4.25);
-    sampleContext.font = `700 ${fontSize}px Arial, sans-serif`;
-    sampleContext.textAlign = "center";
-    sampleContext.textBaseline = "middle";
-    sampleContext.fillStyle = "#fff";
-    sampleContext.fillText(name, width / 2, height / 2);
-
-    const pixels = sampleContext.getImageData(0, 0, sampleCanvas.width, sampleCanvas.height);
+    const letters = Array.from("Fiona Lin", (character) => {
+      const code = character.charCodeAt(0).toString(16);
+      return document.alphabet[`A${code}`];
+    });
     const nextParticles = [];
-    for (let y = step / 2; y < height; y += step) {
-      for (let x = step / 2; x < width; x += step) {
-        const pixelX = Math.floor(x * scale);
-        const pixelY = Math.floor(y * scale);
-        const alpha = pixels.data[(pixelY * sampleCanvas.width + pixelX) * 4 + 3];
-        if (alpha < 150) continue;
+    const horizontalInset = window.matchMedia("(max-width: 680px)").matches ? 5 : 18;
+    let offset = 0;
+    let colorIndex = -1;
 
-        const colorIndex = Math.min(bubbleColors.length - 1, Math.floor((x / width) * bubbleColors.length));
-        nextParticles.push({
-          x,
-          y,
-          originX: x,
-          originY: y,
-          velocityX: 0,
-          velocityY: 0,
-          color: bubbleColors[colorIndex],
-        });
+    for (let index = 0; index < letters.length; index += 1) {
+      const letter = letters[index];
+      const character = "Fiona Lin"[index];
+      if (character !== " ") colorIndex += 1;
+
+      if (letter) {
+        for (const [x, y, radius] of letter.P) {
+          nextParticles.push({
+            x: 0,
+            y: 0,
+            originX: horizontalInset + (offset + x) * scaleX,
+            originY: (referenceHeight / 2 - 105 + y) * scaleY,
+            velocityX: 0,
+            velocityY: 0,
+            velocityZ: 0,
+            depth: 1,
+            radius: radius * scaleX,
+            color: bubbleColors[colorIndex % bubbleColors.length],
+          });
+        }
+        offset += letter.W;
       }
+    }
+
+    for (const particle of nextParticles) {
+      particle.x = particle.originX;
+      particle.y = particle.originY;
     }
 
     particles = nextParticles;
@@ -79,24 +93,28 @@ export function initializeBannerAnimation(canvas) {
       let targetY = particle.originY;
 
       if (pointer) {
-        const dx = particle.x - pointer.x;
-        const dy = particle.y - pointer.y;
+        const dx = pointer.x - particle.x;
+        const dy = pointer.y - particle.y;
         const distance = Math.hypot(dx, dy);
-        if (distance > 0 && distance < 105) {
-          const force = (105 - distance) / 105;
-          targetX += (dx / distance) * force * 30;
-          targetY += (dy / distance) * force * 30;
+        if (distance < 150) {
+          targetX = particle.x - dx;
+          targetY = particle.y - dy;
         }
       }
 
-      particle.velocityX = (particle.velocityX + (targetX - particle.x) * 0.09) * 0.78;
-      particle.velocityY = (particle.velocityY + (targetY - particle.y) * 0.09) * 0.78;
+      particle.velocityX = (particle.velocityX + (targetX - particle.x) * 0.1) * 0.85;
+      particle.velocityY = (particle.velocityY + (targetY - particle.y) * 0.1) * 0.85;
       particle.x += particle.velocityX;
       particle.y += particle.velocityY;
 
+      const displacement = Math.hypot(particle.originX - particle.x, particle.originY - particle.y);
+      const targetDepth = displacement / 100 + 1;
+      particle.velocityZ = (particle.velocityZ + (targetDepth - particle.depth) * 0.1) * 0.85;
+      particle.depth += particle.velocityZ;
+
       context.beginPath();
       context.fillStyle = particle.color;
-      context.arc(particle.x, particle.y, 4.2, 0, Math.PI * 2);
+      context.arc(particle.x, particle.y, Math.max(1, particle.radius * particle.depth), 0, Math.PI * 2);
       context.fill();
     }
   }
@@ -105,14 +123,15 @@ export function initializeBannerAnimation(canvas) {
     draw();
     if (!reducedMotion && !document.hidden) {
       frame = window.requestAnimationFrame(animate);
+    } else {
+      frame = 0;
     }
   }
 
   function updatePointer(event) {
     const bounds = canvas.getBoundingClientRect();
     pointer = { x: event.clientX - bounds.left, y: event.clientY - bounds.top };
-    if (reducedMotion) return;
-    if (!frame) frame = window.requestAnimationFrame(animate);
+    if (!reducedMotion && !frame) frame = window.requestAnimationFrame(animate);
   }
 
   canvas.addEventListener("pointermove", updatePointer);
@@ -130,11 +149,8 @@ export function initializeBannerAnimation(canvas) {
     }
   });
 
-  const resizeObserver = new ResizeObserver(() => {
-    buildParticles();
-  });
+  const resizeObserver = new ResizeObserver(buildParticles);
   resizeObserver.observe(canvas);
-
   buildParticles();
   if (!reducedMotion) frame = window.requestAnimationFrame(animate);
 }
