@@ -47,11 +47,12 @@
 			return $scope.activeQuestion++;
 		}
 		$scope.createShareLinks = function (percentage){
-			var url = "http://codifydesign.com";
+			var url = "https://FionaCLin.github.io/Angular/Quiz/";
 
-			var emailLink = '<a class = "btn email" href="mailto:?Subject=Try to beat my quiz score!&amp;body=I scored a '+percentage+'% on this quiz about Saturn. Try to beat my score at '+url+'">Email a friend</a>';
+			var emailLink = '<a class="btn email" href="mailto:?subject=Try to beat my quiz score!&amp;body='+encodeURIComponent('I scored a '+percentage+'% on this quiz about Saturn. Try to beat my score at '+url)+'">Email a friend</a>';
 
-			var twitterLink = '<a class = "btn twitter" target="_blank" href="http://twitter.com/share?text=I scored a '+percentage+'% on this quiz about Saturn. Try to beat my score at&amp;hastags=SaturnQuiz&url='+url+'">Tweet your score</a>'
+			var shareText = encodeURIComponent('I scored a '+percentage+'% on this quiz about Saturn. Try to beat my score!');
+			var twitterLink = '<a class="btn twitter" target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/tweet?text='+shareText+'&amp;hashtags=SaturnQuiz&amp;url='+encodeURIComponent(url)+'">Tweet your score</a>';
 
 			var newMarkup = emailLink + twitterLink;
 
