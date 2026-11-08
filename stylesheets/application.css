@@ -1115,17 +1115,28 @@ code {
     }
 }
 
-@media (max-width: 768px) {
-    #jumbotron .site-title {
-        font-size: 2.5em;
-        margin: 0 0 0.25em;
-    }
+.visually-hidden {
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
 
-#jumbotron .site-title {
-    margin: 0 0 0.25em;
-    text-align: center;
-    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+#name-canvas {
+    display: block;
+    height: 150px;
+    margin: 0 auto 8px;
+    max-width: 100%;
+    width: min(100%, 760px);
+}
+
+@media (max-width: 768px) {
+    #name-canvas {
+        height: 130px;
+    }
 }
 
 #jumbotron .site-tagline {
@@ -1214,8 +1225,8 @@ table {
         padding: clamp(28px, 8vw, 48px) 16px;
     }
 
-    #jumbotron .site-title {
-        font-size: clamp(2rem, 8vw, 2.75rem);
+    #name-canvas {
+        height: 120px;
     }
 
     #jumbotron .site-tagline {

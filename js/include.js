@@ -30,6 +30,16 @@ function setActiveNavigation() {
 document.addEventListener("DOMContentLoaded", async () => {
   await Promise.all(pageIncludes.map(includePartial));
   setActiveNavigation();
+
+  const bannerCanvas = document.querySelector("#name-canvas");
+  if (bannerCanvas) {
+    try {
+      const { initializeBannerAnimation } = await import("./banner-animation.js");
+      initializeBannerAnimation(bannerCanvas);
+    } catch (error) {
+      console.error("Unable to initialize the banner animation.", error);
+    }
+  }
 });
 
 document.addEventListener("click", (event) => {
