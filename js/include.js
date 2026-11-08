@@ -1,47 +1,45 @@
-async function includePartial(name, selector) {
+const pageIncludes = ["nav", "header", "footer"];
+
+async function includePartial(name) {
+  const target = document.querySelector(`[data-include="${name}"]`);
+  if (!target) return;
+
   try {
-    const res = await fetch(`partials/${name}.html`);
-    if (!res.ok) return;
-    const text = await res.text();
+    const response = await fetch(`partials/${name}.html`);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
 
-    document.querySelectorAll(selector).forEach(el => {
-      // Parse the HTML into a container so we can extract scripts
-      const container = document.createElement('div');
-      container.innerHTML = text;
-
-      // Move non-script children into target element
-      Array.from(container.childNodes).forEach(node => {
-        if (node.tagName && node.tagName.toLowerCase() === 'script') return;
-        el.appendChild(node.cloneNode(true));
-      });
-
-      // Execute script tags by creating new script elements
-      Array.from(container.querySelectorAll('script')).forEach(s => {
-        const script = document.createElement('script');
-        if (s.src) {
-          script.src = s.src;
-        } else {
-          script.textContent = s.textContent;
-        }
-        document.body.appendChild(script);
-      });
-    });
-  } catch (e) {
-    console.error('Include error', e);
+    target.innerHTML = await response.text();
+  } catch (error) {
+    console.error(`Unable to load the ${name} partial.`, error);
   }
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-  await includePartial('nav', '[data-include="nav"]');
-  await includePartial('header', '[data-include="header"]');
-  await includePartial('footer', '[data-include="footer"]');
+function setActiveNavigation() {
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-  // Attach nav toggle after injection
-  document.addEventListener('click', function (e) {
-    const btn = e.target.closest('.nav-open-btn');
-    if (btn) {
-      const display = document.querySelector('.nav-display');
-      if (display) display.classList.toggle('open');
+  document.querySelectorAll(".nav-display a").forEach((link) => {
+    if (link.pathname.split("/").pop() === currentPage) {
+      link.classList.add("active");
+      link.setAttribute("aria-current", "page");
     }
   });
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await Promise.all(pageIncludes.map(includePartial));
+  setActiveNavigation();
+});
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest(".nav-open-btn");
+  if (!button) return;
+
+  const navigation = document.querySelector(".nav-display");
+  if (!navigation) return;
+
+  const isExpanded = button.getAttribute("aria-expanded") === "true";
+  button.setAttribute("aria-expanded", String(!isExpanded));
+  navigation.classList.toggle("open", !isExpanded);
 });
